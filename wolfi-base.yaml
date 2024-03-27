@@ -6,10 +6,10 @@ contents:
   packages:
     - wolfi-base
     - curl
-    - php-8.3
-    - php-8.3-phar
-    - php-8.3-mbstring
-    - php-8.3-dom
+    - php-8.2
+    - php-8.2-phar
+    - php-8.2-mbstring
+    - php-8.2-dom
 
 entrypoint:
   command: /bin/sh -l
