@@ -10,6 +10,7 @@ LABEL org.opencontainers.image.authors="M-arcus" \
       org.opencontainers.image.licenses="MIT" \
       org.opencontainers.image.title="PHP-CS-Fixer"
 
-ADD https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v${PHP_CS_FIXER_VERSION}/php-cs-fixer.phar /php-cs-fixer.phar
+RUN curl -L https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v${PHP_CS_FIXER_VERSION}/php-cs-fixer.phar -o /php-cs-fixer.phar && \
+    chmod +x /php-cs-fixer.phar
 
 ENTRYPOINT ["/usr/bin/php", "/php-cs-fixer.phar", "fix"]
