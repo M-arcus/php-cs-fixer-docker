@@ -14,6 +14,8 @@ on:
 permissions:
   contents: read
   packages: write
+  id-token: write
+  attestations: write
 
 jobs:
   base:
@@ -52,6 +54,7 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v5
+        id: push
         with:
           push: true
           platforms: linux/amd64,linux/arm64
@@ -62,3 +65,11 @@ jobs:
             marcusmu/php-cs-fixer:${{ steps.cs_fixer_version.outputs.CS_FIXER_VERSION }}
             ghcr.io/m-arcus/php-cs-fixer:latest
             ghcr.io/m-arcus/php-cs-fixer:${{ steps.cs_fixer_version.outputs.CS_FIXER_VERSION }}
+
+      - name: Attest
+        uses: actions/attest-build-provenance@v1
+        id: attest
+        with:
+          subject-name: ghcr.io/m-arcus/php-cs-fixer
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
