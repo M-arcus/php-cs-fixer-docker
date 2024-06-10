@@ -1,5 +1,7 @@
 # Small PHP-CS-Fixer Docker image
 
+THIS REPO WAS MOVED TO https://github.com/M-arcus/php-codestyle-swissknife-docker .
+
 This image uses Wolfi-OS to create a very small PHP-CS-Fixer Docker image and still glibc, to be used in CI/CD pipelines.
 
 - Official PHP-CS-Fixer image is 100MB and uses Alpine Linux (is musl and does sometimes work **different** than your regular production server / local machine)
